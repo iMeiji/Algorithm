@@ -13,9 +13,10 @@ Java 排序算法知识点总结
 
 
 
-
 ### 参考
-[1]: https://github.com/junicorn/Algorithm	"Java算法题，数据结构分析和实现"
-[2]: https://github.com/iTimeTraveler/SortAlgorithms	"八大排序算法总结与java实现"
+- [Java算法题，数据结构分析和实现](https://github.com/junicorn/Algorithm)
+- [八大排序算法总结与java实现](https://github.com/iTimeTraveler/SortAlgorithms)
+
+
 
 
