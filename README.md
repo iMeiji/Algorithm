@@ -4,7 +4,7 @@ Java 排序算法知识点总结
 ### 查找算法
 
 - [x] [顺序查找](./Search/顺序查找.md)
-- [ ] 二分查找
+- [x] [二分查找](./Search/二分查找.md)
 - [ ] 分块查找
 - [ ] 树表查找
 - [ ] 哈希表查找
@@ -30,6 +30,8 @@ Java 排序算法知识点总结
 ### 参考
 - [Java算法题，数据结构分析和实现](https://github.com/junicorn/Algorithm)
 - [八大排序算法总结与java实现](https://github.com/iTimeTraveler/SortAlgorithms)
+- [查找算法总结](https://www.zybuluo.com/guoxs/note/369750)
+- [常用查找算法](http://codingxiaxw.cn/2017/01/14/66-leetcode-find/)
 
 
 
