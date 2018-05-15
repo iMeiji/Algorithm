@@ -2,6 +2,11 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * 插入排序
+ *
+ * @author Meiji
+ */
 public class InsertionSort {
 
     public static void main(String[] args) {
