@@ -1,6 +1,9 @@
-package struct;
+package struct.linkedlist;
 
-public class LinkedListAlgo {
+/**
+ * 单链表算法
+ */
+public class SingleLinkedListAlgo {
 
     public static class Node {
         private int data;

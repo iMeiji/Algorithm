@@ -1,4 +1,4 @@
-package struct;
+package struct.array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 基于数组实现的 LRU 缓存
  */
-public class LRUArray<T> {
+public class LRUBasedArray<T> {
 
     private static final int DEFAULT_CAPACITY = (1 << 4);
 
@@ -18,11 +18,11 @@ public class LRUArray<T> {
 
     private Map<T, Integer> holder;
 
-    public LRUArray() {
+    public LRUBasedArray() {
         this(DEFAULT_CAPACITY);
     }
 
-    public LRUArray(int capacity) {
+    public LRUBasedArray(int capacity) {
         this.capacity = capacity;
         value = (T[]) new Object[capacity];
         count = 0;
@@ -111,7 +111,7 @@ public class LRUArray<T> {
     }
 
     public static void main(String[] args) {
-        LRUArray<Integer> lru = new LRUArray<>();
+        LRUBasedArray<Integer> lru = new LRUBasedArray<>();
         lru.offer(1);
         lru.offer(2);
         lru.offer(3);

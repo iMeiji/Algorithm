@@ -1,5 +1,13 @@
-package struct;
+package struct.array;
 
+/**
+ * 数组
+ * 插入元素（头部、尾部、指定下角标）
+ * 删除元素（头部、尾部、指定下角标）
+ * 扩容
+ *
+ * @param <T>
+ */
 public class Array<T> {
 
     private T[] data;

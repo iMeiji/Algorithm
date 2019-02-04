@@ -1,5 +1,8 @@
-package struct;
+package struct.linkedlist;
 
+/**
+ * 单链表插入、删除、访问操作
+ */
 public class SingleLinkedList {
 
     private Node head = null;
@@ -220,8 +223,5 @@ public class SingleLinkedList {
             this.next = next;
         }
 
-        public int getData() {
-            return data;
-        }
     }
 }
