@@ -8,6 +8,9 @@ Java 数据结构和算法知识点总结
 - [x] [单链表算法](Code/src/struct/linkedlist/SingleLinkedListAlgo.java)
 - [x] [单链表实现 LRU 缓存](Code/src/struct/linkedlist/LRUBasedOnSingleLinkedList.java)
 - [x] [单链表实现的栈](Code/src/struct/stack/StackBasedOnLinkedList.java)
+- [x] [数组实现的队列](Code/src/struct/queue/QueueBasedOnArray.java)
+- [x] [单链表实现的队列](Code/src/struct/queue/QueueBasedOnSingleLinkedlist.java)
+- [x] [循环队列](Code/src/struct/queue/CircularQueue.java)
 
 
 
