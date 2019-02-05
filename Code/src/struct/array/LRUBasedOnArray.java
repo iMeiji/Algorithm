@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 基于数组实现的 LRU 缓存
  */
-public class LRUBasedArray<T> {
+public class LRUBasedOnArray<T> {
 
     private static final int DEFAULT_CAPACITY = (1 << 4);
 
@@ -18,11 +18,11 @@ public class LRUBasedArray<T> {
 
     private Map<T, Integer> holder;
 
-    public LRUBasedArray() {
+    public LRUBasedOnArray() {
         this(DEFAULT_CAPACITY);
     }
 
-    public LRUBasedArray(int capacity) {
+    public LRUBasedOnArray(int capacity) {
         this.capacity = capacity;
         value = (T[]) new Object[capacity];
         count = 0;
@@ -111,7 +111,7 @@ public class LRUBasedArray<T> {
     }
 
     public static void main(String[] args) {
-        LRUBasedArray<Integer> lru = new LRUBasedArray<>();
+        LRUBasedOnArray<Integer> lru = new LRUBasedOnArray<>();
         lru.offer(1);
         lru.offer(2);
         lru.offer(3);

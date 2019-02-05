@@ -3,10 +3,12 @@ Java 数据结构和算法知识点总结
 
 ### 数据结构
 - [x] [数组](Code/src/struct/array/Array.java)
-- [x] [数组实现 LRU 缓存](Code/src/struct/array/LRUBasedArray.java)
+- [x] [数组实现 LRU 缓存](Code/src/struct/array/LRUBasedOnArray.java)
 - [x] [单链表](Code/src/struct/linkedlist/SingleLinkedList.java)
 - [x] [单链表算法](Code/src/struct/linkedlist/SingleLinkedListAlgo.java)
-- [x] [单链表实现 LRU 缓存](Code/src/struct/linkedlist/LRUBasedSingleLinkedList.java)
+- [x] [单链表实现 LRU 缓存](Code/src/struct/linkedlist/LRUBasedOnSingleLinkedList.java)
+- [x] [单链表实现的栈](Code/src/struct/stack/StackBasedOnLinkedList.java)
+
 
 
 

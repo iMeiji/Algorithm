@@ -5,7 +5,7 @@ package struct.linkedlist;
  *
  * @param <T>
  */
-public class LRUBasedSingleLinkedList<T> {
+public class LRUBasedOnSingleLinkedList<T> {
 
     private final int DEFAULT_CAPACITY = 1 << 4;
 
@@ -15,13 +15,13 @@ public class LRUBasedSingleLinkedList<T> {
 
     private int capacity;
 
-    public LRUBasedSingleLinkedList() {
+    public LRUBasedOnSingleLinkedList() {
         this.headNode = new Node<>();
         this.capacity = DEFAULT_CAPACITY;
         this.length = 0;
     }
 
-    public LRUBasedSingleLinkedList(int capacity) {
+    public LRUBasedOnSingleLinkedList(int capacity) {
         this.headNode = new Node<>();
         this.capacity = capacity;
         this.length = 0;
@@ -124,7 +124,7 @@ public class LRUBasedSingleLinkedList<T> {
     }
 
     public static void main(String[] args) {
-        LRUBasedSingleLinkedList list = new LRUBasedSingleLinkedList(2);
+        LRUBasedOnSingleLinkedList list = new LRUBasedOnSingleLinkedList(2);
         list.add(1);
         list.add(2);
         list.add(3);
