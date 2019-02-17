@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class SelectionSort {
 
     public static void main(String[] args) {
-        Integer[] arr = new Integer[]{22, 33, 11, 25, 1, -2, 66};
+        Integer[] arr = new Integer[]{5, 7, 1, 9, 1, -2};
         System.out.println("Init = " + Arrays.toString(arr));
         selectionSort(arr);
         System.out.println("Result = " + Arrays.toString(arr));
@@ -22,14 +22,12 @@ public class SelectionSort {
      * 则需要在剩余的 [i...n-1] 中找出其中的最小值，然后将找到的最小值与 i 指向的值进行交换。
      * 因为每一趟确定元素的过程中都会有一个选择最大值的子流程，所以人们形象地称之为选择排序
      * <p>
-     * Init = [22, 33, 11, 25, 1, -2, 66]
-     * Sorting : i = 0 [-2, 33, 11, 25, 1, 22, 66] (22 <-> -2)
-     * Sorting : i = 1 [-2, 1, 11, 25, 33, 22, 66] (33 <-> 1)
-     * Sorting : i = 2 [-2, 1, 11, 25, 33, 22, 66] (无需交换)
-     * Sorting : i = 3 [-2, 1, 11, 22, 33, 25, 66] (25 <-> 22)
-     * Sorting : i = 4 [-2, 1, 11, 22, 25, 33, 66] (无需交换)
-     * Sorting : i = 5 [-2, 1, 11, 22, 25, 33, 66] (无需交换)
-     * Sorting : i = 6 [-2, 1, 11, 22, 25, 33, 66] (无需交换)
+     * Init = [5, 7, 1, 9, 1, -2]
+     * Sorting : i = 0 [-2, 7, 1, 9, 1, 5]
+     * Sorting : i = 1 [-2, 1, 7, 9, 1, 5]
+     * Sorting : i = 2 [-2, 1, 1, 9, 7, 5]
+     * Sorting : i = 3 [-2, 1, 1, 5, 7, 9]
+     * Result = [-2, 1, 1, 5, 7, 9]
      * </p>
      * 选择排序的简单和直观名副其实，这也造就了它”出了名的慢性子”，
      * 无论是哪种情况，哪怕原数组已排序完成，它也将花费将近 n²/2 次遍历来确认一遍。
@@ -43,21 +41,26 @@ public class SelectionSort {
      * @param <T>
      */
     static <T extends Comparable<T>> void selectionSort(T[] arr) {
-        for (int i = 0; i < arr.length; i++) {
+        int len = arr.length;
+        if (len <= 1) {
+            return;
+        }
 
-            int min = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                int compare = arr[j].compareTo(arr[min]);
+        for (int i = 0; i < len - 1; i++) {
+
+            int minIndex = i;
+            for (int j = i + 1; j < len; j++) {
+                int compare = arr[j].compareTo(arr[minIndex]);
                 if (compare < 0) {
-                    min = j;
+                    minIndex = j;
                 }
             }
-            if (min != i) {
-                T temp = arr[min];
-                arr[min] = arr[i];
-                arr[i] = temp;
+            if (minIndex != i) {
+                T temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+                System.out.println("Sorting : i = " + i + " " + Arrays.toString(arr));
             }
-            System.out.println("Sorting : i = " + i + " " + Arrays.toString(arr));
         }
     }
 }
