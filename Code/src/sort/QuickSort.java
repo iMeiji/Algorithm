@@ -10,10 +10,22 @@ import java.util.Arrays;
 public class QuickSort {
 
     public static void main(String[] args) {
-        Integer[] object = new Integer[]{26, 19, 7, 37, 27, 57, 67, 99, 87, 17};
+        Integer[] object = new Integer[]{5, 7, 1, 9, 1, -2};
         System.out.println("init = " + Arrays.toString(object));
-        quickSort(object, 0, object.length - 1);
+        quickSortInternally(object, 0, object.length - 1);
         System.out.println(Arrays.toString(object));
+    }
+
+    // 快速排序递归函数，p,r 为下标
+    public static <T extends Comparable<T>> void quickSortInternally(T[] arr, int p, int r) {
+        if (p >= r) {
+            return;
+        }
+        // 获取分区点
+        int q = partition(arr, p, r);
+        // q 为分区点，把数组分为 [p, q - 1] ,[q + 1, r] 两部分
+        quickSortInternally(arr, p, q - 1);
+        quickSortInternally(arr, q + 1, r);
     }
 
     /**
@@ -25,57 +37,45 @@ public class QuickSort {
      * <p>
      * 3．再对左右区间重复第二步，直到各区间只有一个数。
      * <p>
-     * init = [26, 19, 7, 37, 27, 57, 67, 99, 87, 17]
-     * 第一趟 基准为 26
-     * 从后往前找，找到 17 比 26 小，把 17 复制放到基准位置
-     * [17, 19, 7, 37, 27, 57, 67, 99, 87, 17]
-     * 从前往后找，找到 37 比 26 大，把 37 放到 17 位置
-     * [17, 19, 7, 37, 27, 57, 67, 99, 87, 37]
-     * 将基准填到这个坑中
-     * [17, 19, 7, 26, 27, 57, 67, 99, 87, 37]
+     * 第一趟 [5, 7, 1, 9, 1, -2]，基准为 -2
+     * 分区后
+     * 左边 [-2]，递归结束
+     * 右边 [7, 1, 9, 1, 5]
      * <p>
-     * 开始递归左边[17, 19, 7] ，右边 [27, 57, 67, 99, 87, 37]
-     * 左边：
-     * [7, 17, 19]
-     * 右边：
-     * [57, 67, 99, 87, 37]
-     * [37, 57, 99, 87, 67]
-     * [99, 87, 67]
-     * [67, 87]
-     *
-     * @param arr
-     * @param low
-     * @param high
-     * @param <T>
+     * 第二趟 [7, 1, 9, 1, 5]，基准为 5
+     * 分区后
+     * 左边 [1, 1]
+     * 右边 [7, 9]
+     * <p>
+     * 第三趟
+     * 左边 [1,1]
+     * 右边 [7,9]
      */
-    public static <T extends Comparable<T>> void quickSort(T[] arr, int low, int high) {
-        if (arr.length <= 0)
-            return;
-        if (low >= high)
-            return;
-
-        int left = low;
-        int right = high;
-        T temp = arr[left]; //挖坑1：保存基准的值
-        System.out.print("before = ");
-        for (int i = low, j = 0; i <= high; i++) {
-            System.out.print(arr[i] + ", ");
-        }
-        System.out.println();
-        while (left < right) {
-            while (left < right && arr[right].compareTo(temp) >= 0) { //坑2：从后向前找到比基准小的元素，插入到基准位置坑1中
-                right--;
+    public static <T extends Comparable<T>> int partition(T[] arr, int p, int r) {
+        // 选取最后一项为基准
+        T pivot = arr[r];
+        int i = p;
+        // 把小于基准的数放在左边
+        for (int j = p; j < r; j++) {
+            if (arr[j].compareTo(pivot) < 0) {
+                if (i == j) {
+                    i++;
+                } else {
+                    T temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    i++;
+                }
             }
-            arr[left] = arr[right];
-
-            while (left < right && arr[left].compareTo(temp) <= 0) { //坑3：从前往后找到比基准大的元素，放到刚才挖的坑2中
-                left++;
-            }
-            arr[right] = arr[left];
         }
-        arr[left] = temp; //退出时，left等于right。将基准填到这个坑中
-        System.out.println("Sorting = " + Arrays.toString(arr) + " temp = " + temp + " left = " + left + " right = " + right);
-        quickSort(arr, low, left - 1);
-        quickSort(arr, left + 1, high);
+        // 基准与大于基准的第一项互换，如果 i == r ，说明数值的顺序已排好
+        if (i != r) {
+            T temp = arr[i];
+            arr[i] = arr[r];
+            arr[r] = temp;
+        }
+
+        System.out.println("i=" + i);
+        return i;
     }
 }
