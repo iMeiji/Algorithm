@@ -15,7 +15,7 @@ public class BinarySearch {
         Arrays.sort(arr);
         System.out.println("init = " + Arrays.toString(arr));
         int r1 = binarySearch_recursive(0, arr.length - 1, 2, arr);
-        int r2 = binarySearch_iterative(0, arr.length - 1, 2, arr);
+        int r2 = binarySearch_iterative(arr, arr.length, 2);
         System.out.println("key 的下角标 = " + r1);
         System.out.println("key 的下角标 = " + r2);
     }
@@ -30,15 +30,15 @@ public class BinarySearch {
      * 若key大于当前位置值arr[k]，则在数列的后半段中继续查找arr[mid+1,high]，
      * 直到找到为止,时间复杂度:O(log(n))。
      *
-     * @param start
-     * @param end
-     * @param key
+     * @param low
+     * @param high
+     * @param value
      * @param arr
      * @return
      */
-    static int binarySearch_recursive(int start, int end, int key, int[] arr) {
+    static int binarySearch_recursive(int low, int high, int value, int[] arr) {
         // 终止循环
-        if (start > end) {
+        if (low > high) {
             return -1;
         }
         /**
@@ -53,47 +53,41 @@ public class BinarySearch {
          *
          * 所以，正确的写法应该是mid = low + (high – low)/2或 mid = low + (high – low)>>1
          */
-        int mid = start + (end - start) / 2;
-        if (arr[mid] > key) {
-            // [start,...,key,...,mid,...,end] 说明 key 在 mid 左侧 [start,...,mid-1]
-            return binarySearch_recursive(start, mid - 1, key, arr);
-        } else if (arr[mid] < key) {
-            // [start,...,mid,...,key,...,end] 说明 key 在 mid 右侧 [mid+1,...,end]
-            return binarySearch_recursive(mid + 1, end, key, arr);
+        int mid = low + (high - low) / 2;
+        if (arr[mid] > value) {
+            // [low,...,value,...,mid,...,high] 说明 value 在 mid 左侧 [low,...,mid-1]
+            return binarySearch_recursive(low, mid - 1, value, arr);
+        } else if (arr[mid] < value) {
+            // [low,...,mid,...,value,...,high] 说明 value 在 mid 右侧 [mid+1,...,high]
+            return binarySearch_recursive(mid + 1, high, value, arr);
         } else {
-            // 找到 key 的下标
+            // 找到 value 的下标
             return mid;
         }
     }
 
     /**
      * 二分法查找迭代版
-     *
-     * @param start
-     * @param end
-     * @param key
-     * @param arr
-     * @return
      */
-    static int binarySearch_iterative(int start, int end, int key, int[] arr) {
-        int result = -1;
-        int mid;
+    static int binarySearch_iterative(int[] arr, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+
         // 注意条件
-        while (start <= end) {
+        while (low <= high) {
             // 计算二分查找中的中值
-            mid = start + (end - start) / 2;
-            if (arr[mid] < key) {
-                // key 在右侧
-                start = mid + 1;
-            } else if (arr[mid] > key) {
-                // key 在左侧
-                end = mid - 1;
-            } else {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == value) {
                 // key 在中间,跳出循环
-                result = mid;
-                break;
+                return mid;
+            } else if (arr[mid] > value) {
+                // key 在左侧
+                high = mid - 1;
+            } else {
+                // key 在右侧
+                low = mid + 1;
             }
         }
-        return result;
+        return -1;
     }
 }
